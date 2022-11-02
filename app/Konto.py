@@ -5,6 +5,7 @@ class Konto:
         self.pesel = self.poprawny_pesel(pesel)
         self.kod = kod
         self.saldo = self.promocja_poprawiona()
+        self.oplata_za_przelew_ekspresowy = 1
 
 
     def poprawny_pesel(self, pesel):
@@ -45,3 +46,14 @@ class Konto:
             if len(self.kod) == 8 and self.kod[0:5] == "PROM_":
                 return 50
         return 0
+
+    def zaksieguj_przelew_przychodzacy(self, kwota_przelewu):
+        self.saldo += kwota_przelewu
+
+    def zaksieguj_przelew_wychodzacy(self, kwota_przelewu):
+        if kwota_przelewu <= self.saldo:
+            self.saldo -= kwota_przelewu
+
+    def zaksieguj_przelew_wychodzacy_ekspresowy(self, kwota_przelewu):
+        if kwota_przelewu <= self.saldo:
+            self.saldo -= kwota_przelewu +1
