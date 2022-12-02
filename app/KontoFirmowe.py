@@ -6,6 +6,7 @@ class KontoFirmowe(Konto):
         self.nip = self.poprawny_nip(nip)
         self.saldo = 0
         self.oplata_za_przelew_ekspresowy = 5
+        self.historia = []
 
     def poprawny_nip(self, nip):
         if len(nip) == 10:
