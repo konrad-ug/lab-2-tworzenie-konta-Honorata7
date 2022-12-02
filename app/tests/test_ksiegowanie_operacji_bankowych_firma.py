@@ -3,7 +3,7 @@ import unittest
 from ..Konto import Konto
 from ..KontoFirmowe import KontoFirmowe
 
-class TestKsiegowaniePrzelewowKlientPrywatny(unittest.TestCase): 
+class TestKsiegowaniePrzelewowFirma(unittest.TestCase): 
 
     nazwaFirmy = "XYZ"
     nip = "1234567890"
@@ -38,13 +38,13 @@ class TestKsiegowaniePrzelewowKlientPrywatny(unittest.TestCase):
         konto = KontoFirmowe(self.nazwaFirmy, self.nip)
         konto.saldo = 500
         konto.zaksieguj_przelew_wychodzacy_ekspresowy(400)
-        self.assertEqual(konto.saldo, 500-(400+1), "Błąd!")
+        self.assertEqual(konto.saldo, 500-(400+5), "Błąd!")
 
     def test_przelew_ekspresowy_ponizej_0(self):
         konto = KontoFirmowe(self.nazwaFirmy, self.nip)
         konto.saldo = 500
         konto.zaksieguj_przelew_wychodzacy_ekspresowy(500)
-        self.assertEqual(konto.saldo, 500-500-1, "Błąd!")
+        self.assertEqual(konto.saldo, 500-500-5, "Błąd!")
 
     def test_przelew_ekspresowy_niewystarczajace_srodki(self):
         konto = KontoFirmowe(self.nazwaFirmy, self.nip)

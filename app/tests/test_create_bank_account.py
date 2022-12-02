@@ -19,6 +19,27 @@ class TestCreateBankAccount(unittest.TestCase):
         dlugi_pesel = Konto("Jan", "Kowalski", "01234567891234")
         self.assertEqual(dlugi_pesel.pesel, "Niepoprawny pesel!", "Pesel jest za dlugi")
 
+    def test_urodzony_1800_0(self):
+        urodzony_1800_0 = Konto("Jan", "Kowalski", "01934567890")
+        self.assertEqual(urodzony_1800_0.rok_urodzenia(), 1801, "Niepoprawny pesel")
+
+    def test_urodzony_1900_0(self):
+        urodzony_1900_0 = Konto("Jan", "Kowalski", "01134567890")
+        self.assertEqual(urodzony_1900_0.rok_urodzenia(), 1901, "Niepoprawny pesel")
+
+    def test_urodzony_2100_0(self):
+        urodzony_2100_0 = Konto("Jan", "Kowalski", "01534567890")
+        self.assertEqual(urodzony_2100_0.rok_urodzenia(), 2101, "Niepoprawny pesel")
+
+    def test_urodzony_1800_inne_niz_0(self):
+        urodzony_1800_inne_niz_0 = Konto("Jan", "Kowalski", "11934567890")
+        self.assertEqual(urodzony_1800_inne_niz_0.rok_urodzenia(), 1811, "Niepoprawny pesel")
+
+    def test_urodzony_2100_inne_niz_0(self):
+        urodzony_2100_inne_niz_0 = Konto("Jan", "Kowalski", "19534567890")
+        self.assertEqual(urodzony_2100_inne_niz_0.rok_urodzenia(), 2109, "Niepoprawny pesel")
+
+
     def test_dobry_kod_rabatowy(self):
         konto_dobry_kod = Konto("Anna", "Nowak", "12345678900", "PROM_123")
         self.assertEqual(konto_dobry_kod.kod, "PROM_123", "")

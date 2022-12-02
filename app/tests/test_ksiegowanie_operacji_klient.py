@@ -1,7 +1,6 @@
 import unittest
 
 from ..Konto import Konto
-from ..KontoFirmowe import KontoFirmowe
 
 class TestKsiegowaniePrzelewowKlientPrywatny(unittest.TestCase): 
 

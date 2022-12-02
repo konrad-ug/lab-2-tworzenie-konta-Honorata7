@@ -39,7 +39,6 @@ class Konto:
     def urodzony_po_1960(self):
         if self.rok_urodzenia != "Niepoprawny pesel!":
             return self.rok_urodzenia() > 1960
-        return "Niepoprawny pesel!"
 
     def promocja_poprawiona(self):
         if self.kod != None and self.urodzony_po_1960():
@@ -56,4 +55,5 @@ class Konto:
 
     def zaksieguj_przelew_wychodzacy_ekspresowy(self, kwota_przelewu):
         if kwota_przelewu <= self.saldo:
-            self.saldo -= kwota_przelewu +1
+            self.saldo -= kwota_przelewu + self.oplata_za_przelew_ekspresowy
+
