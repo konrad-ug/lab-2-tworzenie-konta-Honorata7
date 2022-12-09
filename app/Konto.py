@@ -63,3 +63,10 @@ class Konto:
             self.historia.append(-self.oplata_za_przelew_ekspresowy)
 
 
+    def zaciagnij_kredyt(self, kwota_kredytu):
+        if len(self.historia) < 5:
+            return False
+        if self.historia[-3] > 0 and self.historia[-2] > 0 and self.historia[-1] > 0 and sum(self.historia[-5:]) > kwota_kredytu:
+            self.saldo += kwota_kredytu
+            return True
+        return False

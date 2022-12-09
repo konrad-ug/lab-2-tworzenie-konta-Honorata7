@@ -13,3 +13,10 @@ class KontoFirmowe(Konto):
             return nip
         else:
             return "Niepoprawny nip!"
+
+    def zaciagnij_kredyt(self, kwota_kredytu):
+        if self.saldo > 2* kwota_kredytu and -1775 in self.historia:
+            self.saldo += kwota_kredytu
+            return True
+        return False
+
